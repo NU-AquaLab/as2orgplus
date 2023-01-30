@@ -1,4 +1,4 @@
-# pdb2org
+# as2org+
 
 ## Install
 
