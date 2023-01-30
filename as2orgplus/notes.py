@@ -3,8 +3,8 @@ import re
 
 import pandas as pd
 
-from as2orgp.helpers import field_data_normalization, read_as2rel_file, preprocess_notes
-from as2orgp.filters import filter_spurious_numbers_notes, filter_c2p_notes
+from as2orgplus.helpers import field_data_normalization, read_as2rel_file, preprocess_notes
+from as2orgplus.filters import filter_spurious_numbers_notes, filter_c2p_notes
 
 REGEX_LIST_BOTH = [
     'AS[0-9]+',  # Pattern : AS
