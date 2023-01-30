@@ -2,7 +2,7 @@ import json
 
 import pandas as pd
 
-from as2orgp.helpers import field_data_normalization
+from as2orgplus.helpers import field_data_normalization
 
 class org:
 
