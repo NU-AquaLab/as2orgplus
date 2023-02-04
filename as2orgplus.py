@@ -37,11 +37,11 @@ def main():
                         required=True)
     parser.add_argument("-s",
                         "--snapshot",
-                        help="Specify a PDB snapshoot",
+                        help="Specify a PDB snapshot",
                         required=True)
     parser.add_argument("-a",
                         "--asrel",
-                        help="Specify a AS-REL snapshoot",
+                        help="Specify a AS-REL snapshot",
                         required=True)
     parser.add_argument("-c2pth",
                         "--c2p_threshold",
