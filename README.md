@@ -4,9 +4,11 @@ Welcome to the repository of _as2org+_. Here you can find a the source code and 
 
 as2org+ is a product of the research published in the homonymous paper _"as2org+ : Enriching AS-to-Organization Mappings with PeeringDB"_ appearing in the Proceedings of the [Passive and Active Measurement Conference (PAM) 2023](https://pam2023.networks.imdea.org), March 2023, Virtual Event.
 
+The paper is available [here!](https://www.aqualab.cs.northwestern.edu/wp-content/uploads/2023/02/AArturi-PAM23.pdf)
+
 # <a name="setup"></a> 1. Install
 
-We highly recommend you to use a Python virtual environment to run Jitterbug. In this repository, we also include a ```requirements.txt``` to install all python packages needed to run Jitterbug and the examples.
+We highly recommend you to use a Python virtual environment to run as2org+. In this repository, we also include a ```requirements.txt``` to install all python packages needed to run as2org+ and the examples.
 
 To install this virtual environment, you have to run the following commands.
 
@@ -20,11 +22,15 @@ $ source .as2orgplus/bin/activate
 $ pip3 install -r requirements.txt
 ```
 
+Install the as2orgplus library
+
 ```
-python setup.py install
+$ python setup.py install
 ```
 
 # <a name="run"></a> 2. Run
+
+In the following lines, we use a 2021 PeeringDB snapshot as an example to illustrate all steps necessary to run as2org+. Please select snapshots that align with the dates for what you would like to obtain AS-to-Organization mappings.
 
 ## <a name="download"></a> 2.1 Download data
 
@@ -46,13 +52,19 @@ wget https://publicdata.caida.org/datasets/as-relationships/serial-1/20210601.as
 CAIDA concatenates two organization lists in the as-org2info files that need to be separated to execute as2org+. The next script splits an as-org2info file into two different files.
 
 ```
-as2org_file_splitter.py -f 20210401.as-org2info.txt.gz
+$ python as2org_file_splitter.py -f 20210401.as-org2info.txt.gz
 ```
 
 ## <a name="runas2orgplus"></a> 2.2 Run as2org+
 
+as2org+ can be configure to extract embedded clusters in the ```aka```, ```notes``` and ```org``` fields, and in any combination of the three of them (e.g., ```aka``` and ```notes```). Please take a look at the [documentation](#help)  for more details. In this example, we show how to run it with only data available in the ```aka``` field.
+
 ```
-python as2orgplus.py -f aka -s peeringdb_2_dump_2021_06_01.json -a 20210601.as-rel.txt.bz2 -w 2021-04-01_as2info.csv.gz -o aka_20210601.json
+python as2orgplus.py -f aka \
+-s peeringdb_2_dump_2021_06_01.json \
+-a 20210601.as-rel.txt.bz2 \
+-w 2021-04-01_as2info.csv.gz \
+-o aka_20210601.json
 ```
 
 # <a name="help"></a> 3. as2org+ --help
@@ -105,4 +117,24 @@ keywords = {},
 # <a name="tree"></a>5. Repo structure
 
 ```
+.
+├── LICENCE
+├── README.md
+├── as2org_file_splitter.py
+├── as2orgplus
+│   ├── __init__.py
+│   ├── aka.py
+│   ├── clustering.py
+│   ├── features.py
+│   ├── filters.py
+│   ├── helpers.py
+│   ├── notes.py
+│   └── org.py
+├── as2orgplus.py
+├── requirements.txt
+└── setup.py
+
+1 directory, 14 files
+
+7 directories, 29 files
 ```
